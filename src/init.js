@@ -3,33 +3,75 @@ $(document).ready(function() {
   window.dancers = [];
 
   $('.addDancerButton').on('click', function(event) {
-    /* This function sets up the click handlers for the create-dancer
-     * buttons on dancefloor.html. You should only need to make one small change to it.
-     * As long as the "data-dancer-maker-function-name" attribute of a
-     * class="addDancerButton" DOM node matches one of the names of the
-     * maker functions available in the global scope, clicking that node
-     * will call the function to make the dancer.
-     */
-
-    /* dancerMakerFunctionName is a string which must match
-     * one of the dancer maker functions available in global scope.
-     * A new object of the given type will be created and added
-     * to the stage.
-     */
     var dancerMakerFunctionName = $(this).data('blinky-dancer');
-
-    // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
-
-
-    // make a dancer with a random position
-
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+    window.dancers.push(dancer);
   });
+
+  $('.addFrogButton').on('click', function(event) {
+    var dancerMakerFunctionName = $(this).data('frog');
+    var dancerMakerFunction = window[dancerMakerFunctionName];
+    var dancer = new dancerMakerFunction(
+      $("body").height() * .5 * Math.random() + 300,
+      $("body").width() * Math.random(),
+      Math.random() * 1000
+    );
+    $('body').append(dancer.$node);
+    window.dancers.push(dancer);
+  });
+
+  $('.addEagleButton').on('click', function(event) {
+    var dancerMakerFunctionName = $(this).data('eagle');
+    var dancerMakerFunction = window[dancerMakerFunctionName];
+    var dancer = new dancerMakerFunction(
+      $("body").height() * .5 * Math.random(),
+      $("body").width() * Math.random(),
+      Math.random() * 1000
+    );
+    $('body').append(dancer.$node);
+    window.dancers.push(dancer);
+  });
+
+  $('.addChimpButton').on('click', function(event) {
+    var dancerMakerFunctionName = $(this).data('chimp');
+    var dancerMakerFunction = window[dancerMakerFunctionName];
+    var dancer = new dancerMakerFunction(
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      Math.random() * 1000
+    );
+    $('body').append(dancer.$node);
+    window.dancers.push(dancer);
+  });
+
+  $(".lineUpButton").on("click", function() {
+    window.dancers.forEach(function(dancer) {
+      dancer.lineUp();
+    });
+  });
+
+  // $('.togetherButton').on('click', function(event) {
+  //   if (window.dancers.length > 1) {
+  //     var $first = $(window.dancers[0].$node);
+  //     var $second = $(window.dancers[1].$node);
+  //     //$first.css(position: );
+  //     //$second.css();
+  //     var $together = $('<div class="together"></div>');
+
+  //     $together.append($first);
+  //     $together.append($second);
+  //     $('body').append($together);
+  //   }
+  // });
 });
+
+
+
+
 
