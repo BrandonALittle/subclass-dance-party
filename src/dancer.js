@@ -4,30 +4,36 @@ var Dancer = function(top, left, timeBetweenSteps) {
   // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dancer"></span>');
   this.timeBetweenSteps = timeBetweenSteps;
-  this.top = top;
-  this.left = left;
   this.step();
-  this.setPosition();
+  this.setPosition(top, left);
 };
 
 Dancer.prototype.step = function() {
-  // the basic dancer doesn't do anything interesting at all on each step,
-  // it just schedules the next step
+  window.dancers.forEach(function(dancer) {
+    var distances = [];
+    // create jquery object of dancer and get position of that dancer
+    // iterate again through other dancers
+    // compare distances from dancer to next iteration
+  });
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
-Dancer.prototype.setPosition = function() {
-  // Use css top and left properties to position our <span> tag
-  // where it belongs on the page. See http://api.jquery.com/css/
-  //
+Dancer.prototype.setPosition = function(top, left) {
   var styleSettings = {
-    top: this.top,
-    left: this.left
+    top: top,
+    left: left
   };
   this.$node.css(styleSettings);
 };
 
-
+// function isCollide(a, b) {
+//     return !(
+//         ((a.y + a.height) < (b.y)) ||
+//         (a.y > (b.y + b.height)) ||
+//         ((a.x + a.width) < b.x) ||
+//         (a.x > (b.x + b.width))
+//     );
+// }
 
 
 
