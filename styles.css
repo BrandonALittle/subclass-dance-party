@@ -1,27 +1,133 @@
 body, html{
   height:100%;
 }
+
 body{
+  background-image: url("img/empty_field.jpg");
+  background-position: center;
   margin: 0px;
+  padding-top: 0px;
   background-color:#444;
   font-size: 18px;
 }
+
 body, a:link, a:visited, a:active{
-  color: lightblue;
+  color: #282626;
 }
-.title, .addDancerButton{
+
+.title, .addDancerButton, .addFrogButton, .addEagleButton, .addChimpButton, .lineUpButton {
   padding:5px 12px;
-  float:right;
+  float:left;
 }
+
 .topbar{
-  height:32px;
-  background-color: #555;
+  height:48px;
+  background-color: #d6cd8b;
 }
+
 .title{
   background-color: #777;
+  background-repeat: no-repeat;
+  font-size: 25px;
 }
-.dancer{
-  border:10px solid red;
-  border-radius:10px;
-  position:absolute;
+
+.lineUp {
+  margin-top: 600px;
+  animation: line 1s linear infinite;
+  content: url(img/tiger.png);
 }
+
+.blinkyDancer {
+  content: url(img/puppy1.png);
+  background-position: center;
+  position: absolute;
+}
+
+.eagleDancer {
+  content: url(img/eagle.png);
+  background-position: center;
+  position: absolute;
+  animation: dance 3s linear infinite alternate;
+}
+
+.frogDancer {
+  content:url(img/frog.png);
+  background-position: center;
+  position: absolute;
+  animation: hop 2s linear infinite alternate;
+}
+
+.chimpDancer {
+  content: url(img/chimpanzee.png);
+  background-position: center;
+  position: absolute;
+  animation: spin 2s ease infinite alternate;
+}
+
+.together {
+  position: absolute;
+  animation: dance 5s linear infinite alternate;
+  width: 500px;
+  height: 500px;
+}
+
+.together > span {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+body > span:hover {
+  content:url(img/tiger.png);
+}
+
+@keyframes hop {
+  0% {
+    transform:translateY(0%);
+  }
+  50% {
+    transform:translate(-50px, -50px);
+  }
+  100% {
+    transform:translateY(0%);
+    transform:translateX(-50px);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dance{
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(75px, 0);
+  }
+  75% {
+    transform: translate(-75px, 0);
+  }
+}
+
+@keyframes line {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+
+
+
+
+
+
+
